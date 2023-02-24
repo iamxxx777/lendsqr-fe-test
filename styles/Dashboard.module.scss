@@ -1,0 +1,98 @@
+@import "./Palette.module.scss";
+@import "./Mixins.module.scss";
+
+.dashboard {
+	width: 100%;
+	padding: 2rem 1.5rem;
+	.dashboard_wrapper {
+		width: 100%;
+		max-width: 1100px;
+		margin: 0 auto;
+		h1 {
+			font: {
+				weight: 500;
+				size: $text-2xl;
+			}
+			color: $blue-navy;
+			margin-bottom: 1.5rem;
+		}
+		.stats_wrapper {
+			width: 100%;
+			display: grid;
+			grid-template-columns: 1fr;
+			gap: 1.25rem;
+			.stat {
+				background: $background;
+				border: 1px solid rgba(33, 63, 125, 0.06);
+				box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.04);
+				border-radius: 4px;
+                padding: 1.5rem;
+                gap: 1rem;
+                @include flex_column_left;
+                .stat_icon {
+                    width: 3rem;
+                    height: 3rem;
+                    border-radius: 100px;
+                    @include flex_center;
+                }
+                .icon_purple {
+                    background-color: rgb(223, 24, 255, .1);
+                    color: #DF18FF;
+                }
+                .icon_blue {
+                    background-color: rgb(87, 24, 255, .1);
+                    color: #5718FF;
+                }
+                .icon_orange {
+                    background-color: rgb(245, 95, 68, .1);
+                    color: #F55F44;
+                }
+                .icon_red {
+                    background-color: rgb(255, 51, 102, .1);
+                    color: #FF3366;
+                }
+                .stat_title {
+                    p {
+                        font: {
+                            weight: 500;
+                            size: $text-sm;
+                        }
+                        text-transform: uppercase;
+                        color: $blue-text;
+                    }
+                }
+                .stat_numbers {
+                    p {
+                        font: {
+                            weight: 600;
+                            size: $text-2xl;
+                        }
+                        color: $blue-navy;
+                    }
+                }
+			}
+		}
+	}
+}
+
+
+@media (min-width: 601px) {
+    .dashboard {
+        .dashboard_wrapper {
+            .stats_wrapper {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+    }
+}
+
+@media (min-width: 1200px) {
+    .dashboard {
+        padding: 2.5rem;
+        .dashboard_wrapper {
+            .stats_wrapper {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+    }
+}
