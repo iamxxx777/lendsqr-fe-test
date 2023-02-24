@@ -1,0 +1,19 @@
+@import './Palette.module.scss';
+@import './Mixins.module.scss';
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    .navbar {
+        background: $white;
+        box-shadow: 3px 0px 20px rgba(0, 0, 0, 0.04);
+        width: 100%;
+        padding: 1.5rem;
+        @include flex_btw;
+        .nav_logo {
+            @include flex_left;
+        }
+    }
+}
