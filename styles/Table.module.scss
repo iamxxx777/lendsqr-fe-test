@@ -1,0 +1,70 @@
+@import "./Palette.module.scss";
+@import "./Mixins.module.scss";
+
+.table_container {
+	padding: 1.5rem;
+	.table_wrapper {
+		.table {
+			min-width: 800px;
+			width: 100%;
+			tr {
+				th {
+					padding: 1rem 0;
+					div {
+						gap: 0.5rem;
+						color: $blue-navy;
+						@include flex_left;
+						span {
+							font-style: normal;
+							font-weight: 600;
+							font-size: $text-xs;
+							line-height: 14px;
+							text-transform: uppercase;
+						}
+					}
+				}
+				td {
+					border-bottom: solid 1px rgba(33, 63, 125, 0.1);
+					padding: 1rem 0;
+					div {
+						position: relative;
+						p {
+							font-size: $text-sm;
+						}
+						span {
+							border-radius: 100px;
+							padding: 0.5rem 0.75rem;
+							background: rgb(228, 3, 59, 0.1);
+							color: $red;
+							font-size: $text-sm;
+						}
+						.dropdown {
+                            display: none;
+							position: absolute;
+							top: 3rem;
+							right: 0;
+							min-width: 13rem;
+							background-color: $background;
+							border: 1px solid rgba(84, 95, 125, 0.04);
+                            box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.04);
+							border-radius: 4px;
+                            padding: 1rem 0;
+							z-index: 8;
+							ul {
+								list-style: none;
+								li {
+									padding: 0.65rem 1rem;
+									font-size: $text-sm;
+                                    font-weight: 500;
+                                    color: $blue-text;
+                                    gap: 0.5rem;
+                                    @include flex_left;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

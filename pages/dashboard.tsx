@@ -5,6 +5,7 @@ import PeopleAltOutlinedIcon from '@mui/icons-material/PeopleAltOutlined';
 import Groups2OutlinedIcon from '@mui/icons-material/Groups2Outlined';
 
 import Layout from '@/src/components/Layout'
+import Table from '@/src/components/Table/Table';
 
 import styles from '@/styles/Dashboard.module.scss';
 
@@ -79,6 +80,9 @@ const Dashboard = () => {
                                 <p>102,453</p>
                             </div>
                         </div>
+                    </section>
+                    <section className={styles.table_section}>
+                        <Table />
                     </section>
                 </div>
             </div>
