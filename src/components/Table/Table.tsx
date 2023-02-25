@@ -1,335 +1,114 @@
-import React from 'react'
+import { useState, useEffect } from 'react'
+import ReactPaginate from 'react-paginate';
 import FilterListOutlinedIcon from '@mui/icons-material/FilterListOutlined';
-import MoreVertOutlinedIcon from '@mui/icons-material/MoreVertOutlined';
-import RemoveRedEyeOutlinedIcon from '@mui/icons-material/RemoveRedEyeOutlined';
-import PersonAddAltOutlinedIcon from '@mui/icons-material/PersonAddAltOutlined';
-import PersonRemoveOutlinedIcon from '@mui/icons-material/PersonRemoveOutlined';
+
+import TableRow from './TableRow';
+import Filters from './Filters';
+
+import { User } from '@/src/types';
 
 import styles from "@/styles/Table.module.scss"
 
-const Table = () => {
+type Props = {
+    users: User[];
+}
+
+const Table = ({ users }: Props) => {
+    const [currentIndex, setCurrentIndex] = useState(1);
+    const [currentUsers, setCurrentUsers] = useState<any>([]);
+    const [rows, setRows] = useState(10);
+    const [show_filters, setShowFilters] = useState(false);
+
+    const handleClick = (event: any) => {
+        setCurrentIndex(event.selected);
+    }
+
+    useEffect(() => {
+        const index = currentIndex * rows;
+        const current = users?.slice(index - rows, index);
+        setCurrentUsers(current);
+    }, [currentIndex, rows, users])
+
     return (
         <div className={styles.table_container}>
             <div className={styles.table_wrapper}>
                 <table className={styles.table}>
+                    <thead>
                     <tr>
                         <th>
                             <div>
                                 <span>Organization</span>
-                                <FilterListOutlinedIcon />
+                                <FilterListOutlinedIcon onClick={() => setShowFilters(!show_filters)} />
                             </div>
                         </th>
                         <th>
                             <div>
                                 <span>Username</span>
-                                <FilterListOutlinedIcon />
+                                <FilterListOutlinedIcon onClick={() => setShowFilters(!show_filters)} />
                             </div>
                         </th>
                         <th>
                             <div>
                                 <span>Email</span>
-                                <FilterListOutlinedIcon />
+                                <FilterListOutlinedIcon onClick={() => setShowFilters(!show_filters)} />
                             </div>
                         </th>
                         <th>
                             <div>
                                 <span>Phone Number</span>
-                                <FilterListOutlinedIcon />
+                                <FilterListOutlinedIcon onClick={() => setShowFilters(!show_filters)} />
                             </div>
                         </th>
                         <th>
                             <div>
                                 <span>Date Joined</span>
-                                <FilterListOutlinedIcon />
+                                <FilterListOutlinedIcon onClick={() => setShowFilters(!show_filters)} />
                             </div>
                         </th>
                         <th>
                             <div>
                                 <span>Status</span>
-                                <FilterListOutlinedIcon />
+                                <FilterListOutlinedIcon onClick={() => setShowFilters(!show_filters)} />
                             </div>
                         </th>
                         <th></th>
                     </tr>
-                    <tr>
-                        <td>
-                            <div>
-                                <p>Landsqr</p>
-                            </div>
-                        </td>
-                        <td>
-                            <div>
-                                <p>Adedeji</p>
-                            </div>
-                        </td>
-                        <td>
-                            <div>
-                                <p>adedeji@lendsqr.com</p>
-                            </div>
-                        </td>
-                        <td>
-                            <div>
-                                <p>08078903721</p>
-                            </div>
-                        </td>
-                        <td>
-                            <div>
-                                <p>May 15, 2020 10:00 AM</p>
-                            </div>
-                        </td>
-                        <td>
-                            <div>
-                                <p>
-                                    <span>Inactive</span>
-                                </p>
-                            </div>
-                        </td>
-                        <td>
-                            <div>
-                                <p><MoreVertOutlinedIcon /></p>
-                                <div className={styles.dropdown}>
-                                    <ul>
-                                        <li><RemoveRedEyeOutlinedIcon /> View Details</li>
-                                        <li><PersonAddAltOutlinedIcon /> Blacklist User</li>
-                                        <li><PersonRemoveOutlinedIcon /> Activate User</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div>
-                                <p>Landsqr</p>
-                            </div>
-                        </td>
-                        <td>
-                            <div>
-                                <p>Adedeji</p>
-                            </div>
-                        </td>
-                        <td>
-                            <div>
-                                <p>adedeji@lendsqr.com</p>
-                            </div>
-                        </td>
-                        <td>
-                            <div>
-                                <p>08078903721</p>
-                            </div>
-                        </td>
-                        <td>
-                            <div>
-                                <p>May 15, 2020 10:00 AM</p>
-                            </div>
-                        </td>
-                        <td>
-                            <div>
-                                <p>
-                                    <span>Inactive</span>
-                                </p>
-                            </div>
-                        </td>
-                        <td>
-                            <div>
-                                <p><MoreVertOutlinedIcon /></p>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div>
-                                <p>Landsqr</p>
-                            </div>
-                        </td>
-                        <td>
-                            <div>
-                                <p>Adedeji</p>
-                            </div>
-                        </td>
-                        <td>
-                            <div>
-                                <p>adedeji@lendsqr.com</p>
-                            </div>
-                        </td>
-                        <td>
-                            <div>
-                                <p>08078903721</p>
-                            </div>
-                        </td>
-                        <td>
-                            <div>
-                                <p>May 15, 2020 10:00 AM</p>
-                            </div>
-                        </td>
-                        <td>
-                            <div>
-                                <p>
-                                    <span>Inactive</span>
-                                </p>
-                            </div>
-                        </td>
-                        <td>
-                            <div>
-                                <p><MoreVertOutlinedIcon /></p>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div>
-                                <p>Landsqr</p>
-                            </div>
-                        </td>
-                        <td>
-                            <div>
-                                <p>Adedeji</p>
-                            </div>
-                        </td>
-                        <td>
-                            <div>
-                                <p>adedeji@lendsqr.com</p>
-                            </div>
-                        </td>
-                        <td>
-                            <div>
-                                <p>08078903721</p>
-                            </div>
-                        </td>
-                        <td>
-                            <div>
-                                <p>May 15, 2020 10:00 AM</p>
-                            </div>
-                        </td>
-                        <td>
-                            <div>
-                                <p>
-                                    <span>Inactive</span>
-                                </p>
-                            </div>
-                        </td>
-                        <td>
-                            <div>
-                                <p><MoreVertOutlinedIcon /></p>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div>
-                                <p>Landsqr</p>
-                            </div>
-                        </td>
-                        <td>
-                            <div>
-                                <p>Adedeji</p>
-                            </div>
-                        </td>
-                        <td>
-                            <div>
-                                <p>adedeji@lendsqr.com</p>
-                            </div>
-                        </td>
-                        <td>
-                            <div>
-                                <p>08078903721</p>
-                            </div>
-                        </td>
-                        <td>
-                            <div>
-                                <p>May 15, 2020 10:00 AM</p>
-                            </div>
-                        </td>
-                        <td>
-                            <div>
-                                <p>
-                                    <span>Inactive</span>
-                                </p>
-                            </div>
-                        </td>
-                        <td>
-                            <div>
-                                <p><MoreVertOutlinedIcon /></p>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div>
-                                <p>Landsqr</p>
-                            </div>
-                        </td>
-                        <td>
-                            <div>
-                                <p>Adedeji</p>
-                            </div>
-                        </td>
-                        <td>
-                            <div>
-                                <p>adedeji@lendsqr.com</p>
-                            </div>
-                        </td>
-                        <td>
-                            <div>
-                                <p>08078903721</p>
-                            </div>
-                        </td>
-                        <td>
-                            <div>
-                                <p>May 15, 2020 10:00 AM</p>
-                            </div>
-                        </td>
-                        <td>
-                            <div>
-                                <p>
-                                    <span>Inactive</span>
-                                </p>
-                            </div>
-                        </td>
-                        <td>
-                            <div>
-                                <p><MoreVertOutlinedIcon /></p>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div>
-                                <p>Landsqr</p>
-                            </div>
-                        </td>
-                        <td>
-                            <div>
-                                <p>Adedeji</p>
-                            </div>
-                        </td>
-                        <td>
-                            <div>
-                                <p>adedeji@lendsqr.com</p>
-                            </div>
-                        </td>
-                        <td>
-                            <div>
-                                <p>08078903721</p>
-                            </div>
-                        </td>
-                        <td>
-                            <div>
-                                <p>May 15, 2020 10:00 AM</p>
-                            </div>
-                        </td>
-                        <td>
-                            <div>
-                                <span>Inactive</span>
-                            </div>
-                        </td>
-                        <td>
-                            <div>
-                                <p><MoreVertOutlinedIcon /></p>
-                            </div>
-                        </td>
-                    </tr>
+                    </thead>
+                    <tbody>
+                        {currentUsers?.map((row: User) => <TableRow key={row.id} user={row} />)}
+                    </tbody>
                 </table>
+                <Filters showFilters={show_filters} />
+            </div>
+            <div className={styles.table_footer}>
+                <div className={styles.table_footer_count}>
+                    <span>Showing</span>
+                    <select value={rows} onChange={(e) => setRows(Number(e.target.value))}>
+                        <option value={5}>5</option>
+                        <option value={10}>10</option>
+                        <option value={20}>20</option>
+                    </select> 
+                    <span>out of {users?.length}</span>
+                </div>
+                <div className='table_paginate'>
+                    <ReactPaginate
+                        breakLabel="..."
+                        nextLabel=">"
+                        onPageChange={handleClick}
+                        pageRangeDisplayed={2}
+                        pageCount={Number(users?.length) / rows}
+                        previousLabel="<"
+                        pageClassName="page-item"
+                        pageLinkClassName="page-link"
+                        previousClassName="page-item"
+                        previousLinkClassName="page-link"
+                        nextClassName="page-item"
+                        nextLinkClassName="page-link"
+                        breakClassName="page-item"
+                        breakLinkClassName="page-link"
+                        // renderOnZeroPageCount={null}
+                    />
+                </div>
             </div>
         </div>
     )

@@ -1,24 +1,20 @@
 import React, { useEffect, useState } from 'react'
+import { GetStaticProps } from 'next';
 import Image from 'next/image';
-import axios from 'axios'
+import { QueryClient, dehydrate, useQuery } from 'react-query';
 import PeopleAltOutlinedIcon from '@mui/icons-material/PeopleAltOutlined';
 import Groups2OutlinedIcon from '@mui/icons-material/Groups2Outlined';
 
 import Layout from '@/src/components/Layout'
 import Table from '@/src/components/Table/Table';
 
+import { getAllUsers } from '@/src/queries';
+
 import styles from '@/styles/Dashboard.module.scss';
 
 const Dashboard = () => {
 
-    const getUsers = async () => {
-        const { data } = await axios.get("https://6270020422c706a0ae70b72c.mockapi.io/lendsqr/api/v1/users");
-        console.log(data);
-    }
-
-    // useEffect(() => {
-    //     getUsers();
-    // }, [])
+    const { data, isLoading } = useQuery("allusers", () => getAllUsers());
 
     return (
         <Layout>
@@ -82,12 +78,26 @@ const Dashboard = () => {
                         </div>
                     </section>
                     <section className={styles.table_section}>
-                        <Table />
+                        <Table users={data} />
                     </section>
                 </div>
             </div>
         </Layout>
     )
 }
+
+
+export const getStaticProps: GetStaticProps = async (context) => {
+    const queryClient = new QueryClient();
+
+    queryClient.prefetchQuery("allusers", () => getAllUsers())
+
+    return {
+        props: {
+            queryDehydratedState: dehydrate(queryClient)
+        }
+    };
+}
+
 
 export default Dashboard
