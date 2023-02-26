@@ -17,6 +17,7 @@
 			width: 100%;
 			.nav_logo {
 				@include flex_left;
+                gap: 1.25rem;
 			}
 			.nav_search {
 				display: none;
@@ -96,6 +97,8 @@
 	}
 }
 
+
+
 @media (min-width: 768px) {
 	.header {
 		.navbar {
@@ -156,6 +159,11 @@
     .header {
         .navbar {
             .nav_container {
+                .nav_logo {
+                    svg {
+                        display: none;
+                    }
+                }
                 .nav_search {
                     .nav_input {
                         width: 400px;

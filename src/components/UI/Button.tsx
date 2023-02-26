@@ -45,7 +45,7 @@ export default function Button(
             {...rest}
             type={type}
             disabled={loading || disabled}
-            className={[btnStyles.button, variants[variant], sizes[size], className].join(" ")}
+            className={[btnStyles.button, variants[variant], sizes[size], disabled && btnStyles.button_disabled, className].join(" ")}
             // className={`button ${variants[variant]} my-2 ${sizes[size]} w-full ${className}`}
         >
             {loading ? <Spinner color="gray" size={1.7} /> : <>{children}</>}

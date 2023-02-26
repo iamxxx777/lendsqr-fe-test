@@ -19,12 +19,19 @@ type SidebarItem = {
     cName?: string
 }
 
-const Sidebar = () => {
+type Props = {
+    click: () => void;
+    showSidebar: boolean;
+}
 
-    const { pathname, push } = useRouter();
+const Sidebar = ({ click, showSidebar }: Props) => {
+
+    const { pathname } = useRouter();
 
     return (
-        <div className={styles.sidebar}>
+        <>
+        <div onClick={click} className={[styles.overlay, showSidebar && styles.show_overlay].join(" ")}></div>
+        <div className={[styles.sidebar, showSidebar && styles.show_sidebar].join(" ")}>
             <div className={styles.sidebar_wrapper}>
                 <div className={styles.sidebar_img}>
                     <Image
@@ -75,6 +82,7 @@ const Sidebar = () => {
                 </div>
             </div>
         </div>
+        </>
     )
 }
 

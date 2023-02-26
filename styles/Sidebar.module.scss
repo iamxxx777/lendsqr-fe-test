@@ -83,6 +83,24 @@
     }
 }
 
+.show_sidebar {
+    display: initial;
+}
+
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 3;
+}
+
+.show_overlay {
+    display: block;
+}
 
 
 @media (hover: hover) and (pointer: fine) {

@@ -65,7 +65,7 @@ const Login = () => {
                             <div className={styles.forgot_password}>
                                 <p>Forgot Password</p>
                             </div>
-                            <Button disabled={(!email && !password) ? true : false}>Log in</Button>
+                            <Button type='submit' disabled={(email && password) ? false : true}>Log in</Button>
                         </form>
                     </div>
                 </div>

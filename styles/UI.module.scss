@@ -158,6 +158,11 @@
 	height: 2.5rem;
 }
 
+.button_disabled {
+    background-color: #C4C4C4 !important;
+    pointer-events: none;
+}
+
 .cyan {
 	background-color: $blue-cyan;
 	color: $white;

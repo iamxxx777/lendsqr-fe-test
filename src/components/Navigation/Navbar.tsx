@@ -8,7 +8,11 @@ import { Avatar } from '../UI';
 
 import styles from '../../../styles/Navbar.module.scss';
 
-const Navbar = () => {
+type Props = {
+    click: () => void;
+}
+
+const Navbar = ({ click }: Props) => {
 
     const [showDropdown, setShowDropdown] = useState(false);
 
@@ -17,9 +21,11 @@ const Navbar = () => {
             <nav className={styles.navbar}>
                 <div className={styles.nav_container}>
                     <div className={styles.nav_logo}>
+                        <MenuIcon onClick={click} />
                         <Image
                             src={"/logo.svg"}
                             alt="Lendsqr"
+                            priority
                             width={114}
                             height={30}
                         />
