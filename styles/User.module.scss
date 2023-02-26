@@ -1,0 +1,186 @@
+@import "./Palette.module.scss";
+@import "./Mixins.module.scss";
+
+.user_page {
+	width: 100%;
+	padding: 2rem 1.5rem;
+	.user_page_wrapper {
+		width: 100%;
+		max-width: 1100px;
+		margin: 0 auto;
+		.top_section {
+			.back {
+				margin-bottom: 1.25rem;
+				button {
+					@include button;
+					@include flex_left;
+					gap: 0.25rem;
+					padding: 0;
+					color: $blue-text;
+				}
+			}
+			.title {
+				@include flex_column_left;
+				gap: 0.75rem;
+				h1 {
+					font: {
+						size: $text-2xl;
+						weight: 500;
+					}
+					color: $blue-navy;
+					width: 100%;
+				}
+				.action_btns {
+					@include flex_btw;
+					width: 100%;
+					gap: 0.5rem;
+					button {
+						width: 100%;
+						font-size: $text-xs;
+						min-width: 8.5rem;
+					}
+				}
+			}
+		}
+		.user_banner {
+			background-color: $background;
+			border: 1px solid rgba(33, 63, 125, 0.06);
+			box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.04);
+			border-radius: 4px;
+			padding: 1.5rem 1rem 0 1rem;
+			margin-top: 4rem;
+			.banner_info {
+				padding-bottom: 2.5rem;
+				.user_img {
+					@include flex_left;
+					gap: 0.75rem;
+					.avatar {
+						@include flex_center;
+						width: 5.25rem;
+						height: 5.25rem;
+						border-radius: 6.25rem;
+						background-color: rgb(33, 63, 125, 0.16);
+						color: $blue-navy;
+						svg {
+							font-size: $text-4xl;
+						}
+					}
+					.user_name {
+						h2 {
+							font-weight: 500;
+							font-size: 1.375rem;
+							line-height: 26px;
+							color: $blue-navy;
+							margin-bottom: 0.25rem;
+						}
+						p {
+							font-size: $text-sm;
+						}
+					}
+				}
+				.user_tier {
+					margin-top: 1rem;
+					h3 {
+						font-weight: 500;
+						font-size: $text-sm;
+						line-height: 16px;
+						margin-bottom: 0.5rem;
+					}
+				}
+				.user_balance {
+					margin-top: 1rem;
+					h2 {
+						font-weight: 500;
+						font-size: 1.375rem;
+						line-height: 26px;
+						margin-bottom: 0.5rem;
+						color: $blue-navy;
+					}
+					p {
+						font-size: $text-xs;
+						color: $blue-navy;
+					}
+				}
+			}
+			.banner_tabs {
+				width: 100%;
+				overflow: hidden;
+				.tabs_container {
+					display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+					flex-wrap: nowrap;
+                    flex-grow: 1;
+					gap: 1rem;
+                    overflow: auto;
+					button {
+						@include button;
+                        font-size: $text-sm;
+                        min-width: 9rem;
+						padding: 0.25rem 0.5rem;
+						color: rgba(0, 0, 0, 0.8);
+                        border: 0;
+                        border-radius: 0;
+                        border-bottom: solid 2px transparent;
+					}
+					.tab_active {
+						color: $blue-cyan;
+						border-bottom-color: $blue-cyan;
+					}
+				}
+			}
+		}
+        .user_tabs {
+            margin-top: 3rem;
+        }
+	}
+}
+
+@media (min-width: 601px) {
+	.user_page {
+		.user_page_wrapper {
+			.top_section {
+				.title {
+					@include flex_btw;
+					flex-direction: row;
+					.action_btns {
+						@include flex_right;
+						flex-direction: row;
+						gap: 1.25rem;
+						button {
+							min-width: 10.5rem;
+							width: fit-content;
+						}
+					}
+				}
+			}
+			.user_banner {
+                padding: 1.5rem 1.5rem 0 1.5rem;
+				.banner_info {
+					@include flex_left;
+					gap: 1.5rem;
+					.user_tier {
+						margin-top: 0;
+						border-left: solid 1px rgb(84, 95, 125, 0.2);
+						padding-left: 1.5rem;
+					}
+					.user_balance {
+						margin-top: 0;
+						border-left: solid 1px rgb(84, 95, 125, 0.2);
+						padding-left: 1.5rem;
+					}
+				}
+                .banner_tabs {
+                    justify-content: space-between;
+                    .tabs_container {
+                        button {
+                            font-size: $text-base;
+                            min-width: 0;
+                        }
+                    }
+                }
+			}
+		}
+	}
+}
+

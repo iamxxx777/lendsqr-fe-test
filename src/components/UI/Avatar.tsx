@@ -7,7 +7,7 @@ type Props = {
     isActive?: boolean;
     className?: string;
     image?: string | null;
-    size?: "sm" | "md" | "lg" | "xl";
+    size?: "sm" | "md" | "lg" | "xl" | "xxl";
 };
 
 const sizes = {
@@ -15,6 +15,7 @@ const sizes = {
     md: styles.avatar_md,
     lg: styles.avatar_lg,
     xl: styles.avatar_xl,
+    xxl: styles.avatar_xxl,
 };
 
 export default function Avatar({

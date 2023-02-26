@@ -14,7 +14,7 @@ const variants = {
     cyan: btnStyles.cyan,
     cyan_plain: btnStyles.cyan_plain,
     plain: btnStyles.plain,
-    red_plain: btnStyles.plain
+    red_plain: btnStyles.red_plain
 };
 
 const sizes = {

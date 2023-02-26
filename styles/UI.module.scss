@@ -173,7 +173,7 @@
 	border: 1px solid #545f7d;
 }
 .red_plain {
-	background-color: $red;
+	background-color: transparent;
 	color: $red;
 	border: 1px solid $red;
 }
@@ -263,4 +263,9 @@
 .avatar_xl {
     width: 3rem;
     height: 3rem;
+}
+
+.avatar_xxl {
+    width: 6rem;
+    height: 6rem;
 }
