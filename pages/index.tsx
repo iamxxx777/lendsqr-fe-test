@@ -1,4 +1,4 @@
-import { GetStaticProps } from 'next';
+import { GetServerSideProps } from 'next';
 
 export default function Home() {
     return (
@@ -6,7 +6,7 @@ export default function Home() {
     )
 }
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getServerSideProps: GetServerSideProps = async () => {
     
     return {
         redirect: {
