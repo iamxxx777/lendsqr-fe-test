@@ -1,11 +1,22 @@
 import React, { useState } from 'react'
 import Image from 'next/image';
+import { useRouter } from 'next/router';
 import { Input, Button } from '@/src/components/UI';
 
 import styles from '../styles/Login.module.scss';
 
 const Login = () => {
-    const [showPassword, setShowPassword] = useState(false)
+    const [showPassword, setShowPassword] = useState(false);
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+
+    const { push } = useRouter();
+
+    const handleSubmit = (e: any) => {
+        e.preventDefault();
+        push("/dashboard");
+    }
+
     return (
         <main className={styles.login_page}>
             <div className={styles.login_page__container}>
@@ -31,8 +42,8 @@ const Login = () => {
                     <div className={styles.login_page__form_container}>
                         <h1>Welcome!</h1>
                         <h3>Enter details to login.</h3>
-                        <form>
-                            <Input type='email' label='Email' />
+                        <form onSubmit={handleSubmit}>
+                            <Input type='email' label='Email' value={email} onChange={(e) => setEmail(e.target.value)} />
                             <Input 
                                 type={showPassword ? 'text' : 'password'} 
                                 label='Password' 
@@ -48,11 +59,13 @@ const Login = () => {
                                         )}
                                     </span>
                                 )}
+                                value={password} 
+                                onChange={(e) => setPassword(e.target.value)}
                             />
                             <div className={styles.forgot_password}>
                                 <p>Forgot Password</p>
                             </div>
-                            <Button>Log in</Button>
+                            <Button disabled={(!email && !password) ? true : false}>Log in</Button>
                         </form>
                     </div>
                 </div>

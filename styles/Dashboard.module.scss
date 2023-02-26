@@ -27,7 +27,7 @@
 				box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.04);
 				border-radius: 4px;
 				padding: 1.5rem;
-				gap: 1rem;
+				gap: 0.5rem;
 				@include flex_column_left;
 				.stat_icon {
 					width: 3rem;

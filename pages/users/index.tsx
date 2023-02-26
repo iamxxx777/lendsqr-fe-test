@@ -1,5 +1,6 @@
 import React from 'react'
 import { GetStaticProps } from 'next';
+import Head from 'next/head';
 import Image from 'next/image';
 import { QueryClient, dehydrate, useQuery } from 'react-query';
 import PeopleAltOutlinedIcon from '@mui/icons-material/PeopleAltOutlined';
@@ -17,6 +18,12 @@ const Users = () => {
 
     return (
         <Layout>
+            <Head>
+                <title>Users | Lendsqr</title>
+                <meta name="description" content="Lendsqr front-end assessment" />
+                <meta name="viewport" content="width=device-width, initial-scale=1" />
+                <link rel="icon" href="/favicon.ico" />
+            </Head>
             <div className={styles.dashboard}>
                 <div className={styles.dashboard_wrapper}>
                     <h1>Users</h1>

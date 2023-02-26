@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { GetStaticProps, GetStaticPaths } from 'next';
+import Head from 'next/head';
 import { useRouter } from 'next/router'
 import { QueryClient, dehydrate, useQuery } from 'react-query';
 import ReactStars from 'react-stars'
@@ -30,6 +31,12 @@ const User = () => {
 
     return (
         <Layout>
+            <Head>
+                <title>{user?.profile?.firstName} {user?.profile?.lastName} | Lendsqr</title>
+                <meta name="description" content="Lendsqr front-end assessment" />
+                <meta name="viewport" content="width=device-width, initial-scale=1" />
+                <link rel="icon" href="/favicon.ico" />
+            </Head>
             <div className={styles.user_page}>
                 <div className={styles.user_page_wrapper}>
                     <section className={styles.top_section}>
